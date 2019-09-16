@@ -57,8 +57,10 @@ function reportRandomAccident(){
       .catch(function(error) {
         console.log("Remove failed: " + error.message)
       });
+    var result="";
     ref.push(
         val,
-        err => return (err ? '<h1>error while pushing</h1>' : '<h1>successful push</h1>')
+        err => result = (err ? '<h1>error while pushing</h1>' : '<h1>successful push</h1>')
     );
+    return result;
 }
