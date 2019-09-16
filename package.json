@@ -4,7 +4,7 @@
   "description": "Intelligent ChatBot",
   "main": "app.js",
   "scripts": {
-    "start": "node start",
+    "start": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
