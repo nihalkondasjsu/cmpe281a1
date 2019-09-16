@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
                 "height='450'"+
                 "frameborder='0' style='border:0'"+
                 "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyD6X0yRsNqENwXXrl4fdpMqA08RND_E3f0"+
-                "&location="+geo.ll[0]+","++geo.ll[1]++"' allowfullscreen>"+
+                "&location="+geo.ll[0]+","+geo.ll[1]+"' allowfullscreen>"+
                 "</iframe>"
             );
 });
