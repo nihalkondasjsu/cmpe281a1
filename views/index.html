@@ -22,6 +22,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase.js"></script>
+        <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6X0yRsNqENwXXrl4fdpMqA08RND_E3f0&callback=initMap">
         <script>
             const firebaseConfig = {
               apiKey: "AIzaSyCYpezSiyxwDGKkm8QkMtzLj1Nm5dcwE7E",
@@ -54,6 +56,21 @@
                     alert(data);
                 });
             }
+            
+            function initMap() {
+                var myLatLng = {lat: -25.363, lng: 131.044};
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 2,
+                  center: {lat: 33.7127 , lng: 10}
+                });
+
+                var marker = new google.maps.Marker({
+                  position: myLatLng,
+                  map: map,
+                  title: 'Hello World!'
+                });
+              }
         </script>
     </body>
 </html>
