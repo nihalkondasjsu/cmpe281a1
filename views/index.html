@@ -48,7 +48,7 @@
             
             function loadAccident(json){
                 console.log(json);
-                addMarker({lat:json.location.lat,lng:json.location.lng});
+                addMarker({lat:parseFloat(json.location.lat),lng:parseFloat(json.location.lng)});
             }
             
             function test(){
