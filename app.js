@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
     ip = requestIp.getClientIp(req);
     console.log(ip);
     var geo = geoip.lookup(ip);
-    res.send('<h1>'+JSON.stringify(geo)+'</h1>');
+    //res.send('<h1>'+JSON.stringify(geo)+'</h1>');
     res.send("<iframe"+
                 "width='600'"+
                 "height='450'"+
