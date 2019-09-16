@@ -12,8 +12,8 @@ app.get('/', function (req, res) {
     var geo = geoip.lookup(ip);
     res.send('<h1>'+JSON.stringify(geo)+'</h1>');
 });
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen( process.env.PORT || 3000 , function () {
+  console.log('Example app listening on port '+(process.env.PORT || 3000)+'!');
     
     var ip = "207.97.227.239";
     var geo = geoip.lookup(ip);
