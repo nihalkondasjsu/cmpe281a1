@@ -48,8 +48,7 @@
             
             function loadAccident(json){
                 console.log(json);
-                var link = "https://www.google.com/maps/embed/v1/place?key=AIzaSyD6X0yRsNqENwXXrl4fdpMqA08RND_E3f0&q="+json.location.lat+","+json.location.lng+"&zoom=2&center=33.7127,10";
-                $("#map").attr("src",link);
+                addMarker({lat:json.location.lat,lng:json.location.lng});
             }
             
             function test(){
@@ -58,21 +57,51 @@
                 });
             }
             
+            var map;
+            var markers = [];
+            
             function initMap() {
                 var myLatLng = {lat: -25.363, lng: 131.044};
 
-                var map = new google.maps.Map(document.getElementById('map'), {
+                map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 2,
                   center: {lat: 33.7127 , lng: 10}
                 });
 
-                var marker = new google.maps.Marker({
-                  position: myLatLng,
-                  map: map,
-                  title: 'Hello World!'
-                });
-                alert("initMap");
+                addMarker(myLatLng);
               }
+            
+            function addMarker(location) {
+                deleteMarkers();
+                var marker = new google.maps.Marker({
+                  position: location,
+                  map: map
+                });
+                markers.push(marker);
+            }
+
+            // Sets the map on all markers in the array.
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers.length; i++) {
+                  markers[i].setMap(map);
+                }
+            }
+
+            // Removes the markers from the map, but keeps them in the array.
+            function clearMarkers() {
+                setMapOnAll(null);
+            }
+
+            // Shows any markers currently in the array.
+            function showMarkers() {
+                setMapOnAll(map);
+            }
+
+            // Deletes all markers in the array by removing references to them.
+            function deleteMarkers() {
+                clearMarkers();
+                markers = [];
+            }
         </script>
         
         <script async defer
