@@ -15,11 +15,11 @@ app.get('/', function (req, res) {
     console.log(geo);
     //res.send('<h1>'+JSON.stringify(geo)+'</h1>');
     res.send("<iframe "+
-                "width='600' "+
-                "height='450' "+
+                "width='100%' "+
+                "height='100%' "+
                 "frameborder='0' style='border:0'"+
                 "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyD6X0yRsNqENwXXrl4fdpMqA08RND_E3f0"+
-                "&q="+geo.ll[0]+","+geo.ll[1]+"&zoom=2&&ll=40.7127,-74.0059' allowfullscreen>"+
+                "&q="+geo.ll[0]+","+geo.ll[1]+"&zoom=2&&center=40.7127,-74.0059' allowfullscreen>"+
                 "</iframe>"
             );
 });
