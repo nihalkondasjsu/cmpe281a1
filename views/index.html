@@ -11,11 +11,11 @@
                         width='1100' 
                         height='800' 
                         frameborder='0' style='border:0'
-                        src="" allowfullscreen>
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD6X0yRsNqENwXXrl4fdpMqA08RND_E3f0&q=33.7127,10&zoom=2&center=33.7127,10" allowfullscreen>
                     </iframe>
                 </td>
                 <td>
-                    <button onclick="test()"></button>
+                    <button onclick="test()">test</button>
                 </td>
             </tr>
         </table>
@@ -46,7 +46,7 @@
             function loadAccident(json){
                 console.log(json);
                 var link = "https://www.google.com/maps/embed/v1/place?key=AIzaSyD6X0yRsNqENwXXrl4fdpMqA08RND_E3f0&q="+json.location.lat+","+json.location.lng+"&zoom=2&center=33.7127,10";
-                $("#map").src(link);
+                $("#map").attr("src",link);
             }
             
             function test(){
