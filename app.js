@@ -16,6 +16,13 @@ var db = admin.database();
 
 var ref = db.ref("/AccidentReports");    
 
+var cron = require('node-cron');
+ 
+cron.schedule('*/5 * * * * *', () => {
+  console.log('running a task every 5 secs');
+    reportRandomAccident();
+});
+
 app.get('/', function (req, res) {
     res.sendFile('views/index.html', {root: __dirname });
     //res.setHeader('content-type', 'text/html');
@@ -23,21 +30,9 @@ app.get('/', function (req, res) {
 });
 
 app.get('/reportRandomAccident', function (req, res) {
-    
-    var val = rdata.randomAccident() ;
-    
     res.setHeader('content-type', 'text/html');
-    ref.remove()
-      .then(function() {
-        console.log("Remove succeeded.")
-      })
-      .catch(function(error) {
-        console.log("Remove failed: " + error.message)
-      });
-    ref.push(
-        val,
-        err => res.send(err ? '<h1>error while pushing</h1>' : '<h1>successful push</h1>')
-    );
+    
+    res.send(reportRandomAccident());
 
 });
 
@@ -51,3 +46,19 @@ app.listen( process.env.PORT || 3000 , function () {
     */
     
 });
+
+function reportRandomAccident(){
+    var val = rdata.randomAccident() ;
+    
+    ref.remove()
+      .then(function() {
+        console.log("Remove succeeded.")
+      })
+      .catch(function(error) {
+        console.log("Remove failed: " + error.message)
+      });
+    ref.push(
+        val,
+        err => return (err ? '<h1>error while pushing</h1>' : '<h1>successful push</h1>')
+    );
+}
