@@ -3,11 +3,13 @@ var app = express();
 
 var geoip = require('geoip-lite');
 
+const requestIp = require('request-ip');
+
 app.get('/', function (req, res) {
     res.setHeader('content-type', 'text/html');
     var ip = "207.97.227.239";
     console.log(ip);
-    ip = req.connection.remoteAddress;
+    ip = requestIp.getClientIp(req);
     console.log(ip);
     var geo = geoip.lookup(ip);
     res.send('<h1>'+JSON.stringify(geo)+'</h1>');
