@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Vijay Krishna AAS</title>
+    </head>
+    <body>
+        <table style="width:100%;height:100%">
+            <tr>
+                <td>
+                    <iframe
+                        id="map"    
+                        width='1100' 
+                        height='800' 
+                        frameborder='0' style='border:0'
+                        src="" allowfullscreen>
+                    </iframe>
+                </td>
+                <td>
+                    <button onclick="test()"></button>
+                </td>
+            </tr>
+        </table>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase.js"></script>
+        <script>
+            const firebaseConfig = {
+              apiKey: "AIzaSyCYpezSiyxwDGKkm8QkMtzLj1Nm5dcwE7E",
+              authDomain: "my-project-1495237203835.firebaseapp.com",
+              databaseURL: "https://my-project-1495237203835.firebaseio.com",
+              projectId: "my-project-1495237203835",
+              storageBucket: "",
+              messagingSenderId: "791035027393",
+              appId: "1:791035027393:web:537b39b6d532d0dffb1940"
+            };
+            
+            firebase.initializeApp(firebaseConfig);
+            
+            $(document).ready(function(){
+
+                firebase.database().ref('/AccidentReports').on('child_added', function(snapshot){
+                    loadAccident(snapshot.val());
+                });
+
+            });            
+            
+            function loadAccident(json){
+                console.log(json);
+                var link = "https://www.google.com/maps/embed/v1/place?key=AIzaSyD6X0yRsNqENwXXrl4fdpMqA08RND_E3f0&q="+json.location.lat+","+json.location.lng+"&zoom=2&center=33.7127,10";
+                $("#map").src(link);
+            }
+            
+            function test(){
+                $.get("/reportRandomAccident",function(data){
+                    alert(data);
+                });
+            }
+        </script>
+    </body>
+</html>

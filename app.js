@@ -17,8 +17,9 @@ var db = admin.database();
 var ref = db.ref("/AccidentReports");    
 
 app.get('/', function (req, res) {
-    res.setHeader('content-type', 'text/html');
-    res.send('<h1>Hello World</h1>');
+    res.sendFile('views/index.html', {root: __dirname });
+    //res.setHeader('content-type', 'text/html');
+    //res.send('<h1>Hello World</h1>');
 });
 
 app.get('/reportRandomAccident', function (req, res) {
