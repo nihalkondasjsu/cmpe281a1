@@ -18,6 +18,13 @@
                     <div id="map" style="width:1100px;height:800px;"></div>
                 </td>
                 <td>
+                    <table>
+                        <tr>
+                            <td><h1>VK</h1></td>
+                            <td><h2>Accident Alert System</h2></td>
+                            <td><ul id="details"></ul></td>
+                        </tr>
+                    </table>
                     <button onclick="test()">test</button>
                 </td>
             </tr>
@@ -49,6 +56,12 @@
             function loadAccident(json){
                 console.log(json);
                 addMarker({lat:parseFloat(json.location.lat),lng:parseFloat(json.location.lng)});
+                var html = "<li><b>Car :</b>${json.car}</li>"
+                + "<li><b>License Plate :</b>${json.license}</li>"
+                + "<li><b>City :</b>${json.location.city}</li>"
+                + "<li><b>Country :</b>${json.location.country}</li>"
+                + "<li><b>Time :</b>${json.time}</li>";
+                $("#details").html(html);
             }
             
             function test(){
