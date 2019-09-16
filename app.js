@@ -27,7 +27,7 @@ app.get('/reportRandomAccident', function (req, res) {
     var val = rdata.randomAccident() ;
     
     res.setHeader('content-type', 'text/html');
-    
+    ref.removeValue();
     ref.push(
         val,
         err => res.send(err ? '<h1>error while pushing</h1>' : '<h1>successful push</h1>')
