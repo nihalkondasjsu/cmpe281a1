@@ -5,6 +5,8 @@ var geoip = require('geoip-lite');
 
 const requestIp = require('request-ip');
 
+const citiesDB = require('./db/citiesDB.json');
+
 app.get('/', function (req, res) {
     res.setHeader('content-type', 'text/html');
     var ip = "207.97.227.239";
@@ -25,7 +27,7 @@ app.get('/', function (req, res) {
 });
 app.listen( process.env.PORT || 3000 , function () {
   console.log('Example app listening on port '+(process.env.PORT || 3000)+'!');
-    
+    console.log(citiesDB.length);
     var ip = "207.97.227.239";
     var geo = geoip.lookup(ip);
 
