@@ -58,7 +58,7 @@ app.get('/reportRandomAccident', function (req, res) {
 });
 
 app.listen( process.env.PORT || 3000 , function () {
-  console.log('Example app listening on port '+(process.env.PORT || 3000)+'!');
+  console.log('VKAAS app listening on port '+(process.env.PORT || 3000)+'!');
     
     /*
     ref.once("value", function(snapshot) {
