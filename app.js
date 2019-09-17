@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+const fetch = require('node-fetch');
+
 const rdata = require('./lib/randomData.js');
 
 var admin = require("firebase-admin");
@@ -16,14 +18,14 @@ var db = admin.database();
 
 var ref = db.ref("/AccidentReports");    
 
-var cron = require('node-cron');
- 
-var task = cron.schedule('*/5 * * * * *', () => {
-  console.log('running a task every 5 secs');
-    reportRandomAccident();
-});
-
-task.stop();
+//var cron = require('node-cron');
+// 
+//var task = cron.schedule('*/5 * * * * *', () => {
+//  console.log('running a task every 5 secs');
+//    reportRandomAccident();
+//});
+//
+//task.stop();
 
 app.get('/', function (req, res) {
     res.sendFile('views/index.html', {root: __dirname });
@@ -47,6 +49,17 @@ app.listen( process.env.PORT || 3000 , function () {
     });
     */
     
+    const img = 'https://fyf.tac-cdn.net/images/products/large/BF116-11KM.jpg?auto=webp&quality=60';
+    
+    const { URLSearchParams } = require('url');
+ 
+    const params = new URLSearchParams();
+    params.append('img_link', img);
+
+    fetch('http://nihalkonda.com/AllFolders/GoogleCloudVisionAI/rest.php', { method: 'POST', body: params })
+        .then(res => res.json())
+        .then(json => console.log(json));
+   
 });
 
 function reportRandomAccident(){
