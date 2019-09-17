@@ -16,11 +16,19 @@
             h2{
                 font-family: 'Cinzel', serif;
                 text-align: center;
-                font-size: 25pt;
+                font-size: 21pt;
                 margin: 5px;
             }
-            #details{
+            #details,#description{
                 font-family: 'Rajdhani', sans-serif;
+            }
+            #details{
+                margin-top: 20px;
+                margin-bottom: 20px;
+                font-size: 18pt;
+            }
+            #description{
+                font-size: 12pt;
             }
             b {
                 white-space: nowrap;
@@ -40,13 +48,15 @@
                             <td><h1>VKAAS</h1></td>
                         </tr>
                         <tr>
-                            <td><h2>(Simulation)</h2></td>
+                            <td><h2>Accident Alert System Simulation</h2></td>
                         </tr>
                         <tr>
                             <td><table id="details"></table></td>
                         </tr>
                     </table>
-                    <button onclick="test()">test</button>
+                    <i id="description">The dawn of Modernization and Industrialization is witnessing population boom and mushrooming of vehicles on roads around the world. Road Traffic Management is a cumbersome task for authorities with lots of challenges. Accidents are still a major cause of death despite immense number of efforts in aborting it. This is where VKAAS comes into role. VKAAS forecasts real time accidents every five seconds around the world for simulation purpose and reports it to respective emergency services of the countries - eg. 911 in USA and 108 in India etc. VKAAS picks random location from any country around the world through GPS system. It also tries to lessen the amount of time required to alert the emergency number.  Thus,  VKAAS makes it easier for ambulance to quickly make their way through traffic congestion so that the chances of saving lives is increased.</i>
+                    <br>
+                    <button onclick="stop1()">stop</button>
                 </td>
             </tr>
         </table>
@@ -138,7 +148,10 @@
                 markers = [];
             }
             
-            setInterval(test,5000);
+            var intr = setInterval(test,5000);
+            function stop1(){
+                clearInterval(intr);
+            }
         </script>
         
         <script async defer

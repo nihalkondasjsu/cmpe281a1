@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 
-const fetch = require('node-fetch');
-
 const rdata = require('./lib/randomData.js');
 
 var admin = require("firebase-admin");
@@ -27,10 +25,29 @@ var ref = db.ref("/AccidentReports");
 //
 //task.stop();
 
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+
+app.use(bodyParser.json())
+
+
 app.get('/', function (req, res) {
     res.sendFile('views/index.html', {root: __dirname });
     //res.setHeader('content-type', 'text/html');
     //res.send('<h1>Hello World</h1>');
+});
+
+app.get('/SROA',function(req,res){
+    res.sendFile('views/SROA.html', {root: __dirname });
+});
+
+app.post('/reportAccident',function(req,res){
+    console.log(req.body);
+    res.setHeader('content-type', 'text/html');
+    res.send("<script>alert('Accident Reported');window.location='/SROA';</script>");
 });
 
 app.get('/reportRandomAccident', function (req, res) {
@@ -48,17 +65,6 @@ app.listen( process.env.PORT || 3000 , function () {
       console.log(snapshot.val());
     });
     */
-    
-    const img = 'https://fyf.tac-cdn.net/images/products/large/BF116-11KM.jpg?auto=webp&quality=60';
-    
-    const { URLSearchParams } = require('url');
- 
-    const params = new URLSearchParams();
-    params.append('img_link', img);
-
-    fetch('http://nihalkonda.com/AllFolders/GoogleCloudVisionAI/rest.php', { method: 'POST', body: params })
-        .then(res => res.json())
-        .then(json => console.log(json));
    
 });
 

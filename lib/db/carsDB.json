@@ -354,7 +354,7 @@
     "Sentra",
     "Stanza"
   ],
-  "DeLorean": [],
+  "DeLorean": [""],
   "Dodge": [
     "400",
     "600",
@@ -454,7 +454,7 @@
     "Strada",
     "X1/9"
   ],
-  "Fisker": [],
+  "Fisker": [""],
   "Ford": [
     "Aerostar",
     "Aspire",
@@ -505,7 +505,7 @@
     "Windstar",
     "ZX2 Escort"
   ],
-  "Freightliner": [],
+  "Freightliner": [""],
   "Geo": [
     "Metro",
     "Prizm",
@@ -829,7 +829,7 @@
     "RX-8",
     "Tribute"
   ],
-  "McLaren": [],
+  "McLaren": [""],
   "Mercedes-Benz": [
     "190 Class (2)",
     "190D",
@@ -1240,7 +1240,6 @@
   "smart": [
     "fortwo"
   ],
-  "SRT": [],
   "Sterling": [
     "825",
     "827"
@@ -1279,7 +1278,11 @@
     "X-90",
     "XL7"
   ],
-  "Tesla": [],
+  "Tesla": [
+      "S",
+      "3",
+      "X"
+  ],
   "Toyota": [
     "4Runner",
     "Avalon",
